@@ -55,19 +55,30 @@ void main() {
 
 /* conceptual questions
    
-   q1. list<int> only accepts integers while list<dynamic> lets you mix types. 
+   Q1. What is the difference between a List<int> and a List<dynamic> in Dart?
+    Why is it usually better to use a typed list like List<int>? ANS: list<int> only 
+  accepts integers while list<dynamic> lets you mix types. 
    using list<int> is better for safety and performance.
    
-   q2. initializing to the first element ensures the max is actually from 
-   the list. if you start at 0 and all numbers are negative, 0 would be 
-   the wrong answer.
+   q2.  In your findMax() function, why is it important to initialize your 'running
+    maximum' variable to the first element of the list rather than to 0 or to a very
+     small number? What could go wrong with the other approaches? ANSW: initializing to the
+     first element ensures the max is actually from 
+     the list. if you start at 0 and all numbers are negative, 0 would be 
+     the wrong answer.
    
-   q3. this is code reuse or the dry principle. it makes the code 
+   q3.Your calculateAverage() function calls calculateSum() internally. What
+    software design principle does this demonstrate, and why is reusing existing 
+    functions preferable to duplicating code? ANSW: this is code reuse or the dry principle. it makes the code 
    cleaner and easier to maintain.
    
-   q4. for-in is cleaner for just reading items. traditional for loops 
-   are better if you need to know the index or position.
+   q4.Describe in plain English what the for-in loop syntax does in Dart. 
+   How is it different from a traditional for loop with an index? When would you
+    prefer one over the other?  ANSW: for-in is cleaner for just reading items. 
+    traditional for loops are better if you need to know the index or position.
    
-   q5. an empty list would cause an error on numbers[0]. you could add 
-   an if-statement to check if the list is empty before starting.
+   q5. If someone calls your findMax() function with an empty list, what happens?
+    How could you modify the function to handle that case safely? ANSW: an empty list
+     would cause an error on numbers[0]. you could add 
+     an if-statement to check if the list is empty before starting.
 */
