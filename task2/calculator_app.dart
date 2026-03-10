@@ -2,6 +2,9 @@ import 'dart:async';
 
 class Calculator {
   final String name;
+// memory feature to store results
+  final List<String> _history = [];
+
   Calculator(this.name);
 
   double add(double a, double b) => a + b;
@@ -37,6 +40,8 @@ class Calculator {
     
     // wait for 1.5 seconds exactly
     await Future.delayed(Duration(seconds: 1, milliseconds: 500));
+    // saving the successful calculation to history
+    _history.add('$op($a, $b) = $result');
     return result;
   }
 
@@ -49,7 +54,26 @@ class Calculator {
       print('error: $e');
     }
   }
+
+  // showing all past calculations
+  void showHistory() {
+    print('--- calculation history ---');
+    if (_history.isEmpty) {
+      print('no history found.');
+    } else {
+      for (var record in _history) {
+        print(record);
+      }
+    }
+  }
+
+  // clearing the history list
+  void clearHistory() {
+    _history.clear();
+    print('history cleared.');
+  }
 }
+
 
 Future<void> main() async {
   final calc = Calculator('mycalculator');
@@ -62,6 +86,10 @@ Future<void> main() async {
   await calc.displayResult(10, 4, 'divide');
   await calc.displayResult(15, 3, 'divide');
   await calc.displayResult(10, 0, 'divide');
+
+  calc.showHistory();
+  calc.clearHistory();
+  calc.showHistory();
 
   print('all calculations complete.');
 }

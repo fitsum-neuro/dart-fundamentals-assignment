@@ -35,6 +35,24 @@ double calculateAverage(List<int> numbers) {
   return total / numbers.length;
 }
 
+//  manual bubble sort
+// this swaps numbers if they are in the wrong order until sorted
+List<int> manualSort(List<int> numbers) {
+  List<int> sorted = List.from(numbers);
+  int n = sorted.length;
+  for (int i = 0; i < n - 1; i++) {
+    for (int j = 0; j < n - i - 1; j++) {
+      if (sorted[j] > sorted[j + 1]) {
+        // swap the numbers without using .sort()
+        int temp = sorted[j];
+        sorted[j] = sorted[j + 1];
+        sorted[j + 1] = temp;
+      }
+    }
+  }
+  return sorted;
+}
+
 void main() {
   // list of integers including positive and negative ones
   final numbers = <int>[34, -7, 89, 12, -45, 67, 3, 100, -2, 55];
@@ -43,10 +61,12 @@ void main() {
   int minVal = findMin(numbers);
   int sumVal = calculateSum(numbers);
   double avgVal = calculateAverage(numbers);
+  List<int> sortedList = manualSort(numbers);
 
   print('number analysis results');
   print('=======================');
-  print('numbers: $numbers');
+  print('original: $numbers');
+  print('sorted: $sortedList');
   print('maximum value: $maxVal');
   print('minimum value: $minVal');
   print('sum: $sumVal');
